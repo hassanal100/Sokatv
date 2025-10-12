@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="sw" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bongo Dating</title>
+  <meta name="theme-color" content="#0f1720" />
+  <link rel="icon" href="https://img.icons8.com/fluency/48/play-button-circled.png"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            maxbg: "#0f1720",
+            card2: "#1b2430",
+            accent1: "#ff3657",
+            accent2: "#08e0ff"
+          },
+          boxShadow: {
+            glow: "0 0 25px rgba(8,224,255,.35)"
+          },
+          animation: {
+            fade: "fadeIn 0.5s ease-out"
+          },
+          keyframes: {
+            fade: { 
+              "0%": { opacity:0, transform:"translateY(8px)" }, 
+              "100%": { opacity:1, transform:"translateY(0)" } 
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { font-family: Inter, system-ui, Segoe UI }
+    .hide-scroll::-webkit-scrollbar { display:none }
+    .tilt:hover { transform:rotateX(6deg) rotateY(-6deg) scale(1.03) }
+
+    @keyframes fadeScale {
+      0% { opacity:0; transform:scale(0.8); }
+      100% { opacity:1; transform:scale(1); }
+    }
+    .animate-fadeScale { animation: fadeScale 0.4s ease-out forwards; }
+  </style>
+</head>
+<body class="bg-maxbg text-white">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-maxbg/80 border-b border-white/5 animate-fade">
+    <div class="max-w-6xl mx-auto px-4 py-2 flex items-center gap-3">
+      
+      <div class="ml-auto flex items-center gap-2">
+        <button id="themeToggle" class="p-2 rounded-xl hover:bg-white/5" title="Badilisha Theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🧩 Adsterra Direct Link-->
+  <div class="max-w-6xl mx-auto px-4 mt-4">
+    <iframe src="https://www.revenuecpmgate.com/rxsj3euh9?key=88dd85ae05c2e05d067a642fe5d8473a"
+            width="100%" height="90" frameborder="0" scrolling="no" class="rounded-lg shadow-glow"></iframe>
+  </div>
+
+  <!-- HERO SLIDER -->
+  <section id="hero" class="relative animate-fade">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="relative overflow-hidden rounded-3xl mt-4 shadow-glow h-[240px] sm:h-[320px] md:h-[400px]">
+        <div id="heroSlides" class="h-full w-full transition-all duration-700"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-maxbg/80 to-transparent"></div>
+        <div class="absolute bottom-6 left-6">
+          <h2 id="heroTitle" class="text-3xl md:text-5xl font-extrabold drop-shadow"></h2>
+          
+        </div>
+        <div id="heroDots" class="absolute right-4 bottom-4 flex gap-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANNELS -->
+  <main class="max-w-6xl mx-auto px-4 py-10" id="channels">
+    <h3 class="text-2xl font-extrabold mb-4">Bongo Dating </h3>
+
+    <!-- Adsterra Direct Link-->
+    <div class="mb-6">
+      <iframe src="https://www.revenuecpmgate.com/rxsj3euh9?key=88dd85ae05c2e05d067a642fe5d8473a"
+              width="100%" height="60" frameborder="0" scrolling="no" class="rounded-lg shadow-glow"></iframe>
+    </div>
+
+    <div class="flex gap-2 mb-4">
+      <input id="channelSearch" class="flex-1 bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 ring-accent2/50" placeholder="Search Best Videos..." />
+      <select id="channelSort" class="bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none">
+        <option value="name">A–Z</option>
+        <option value="recent">Newest</option>
+      </select>
+    </div>
+    <div id="channelGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
+  </main>
+
+  <!-- 🧩 Adsterra Direct link-->
+  <div class="max-w-6xl mx-auto px-4 mt-10 mb-6">
+    <iframe src="https://www.revenuecpmgate.com/rxsj3euh9?key=88dd85ae05c2e05d067a642fe5d8473a"
+            width="100%" height="90" frameborder="0" scrolling="no" class="rounded-lg shadow-glow"></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm opacity-70">
+      © 2025 Mgodi TV Max. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- MODAL AD BOX -->
+  <div id="adModal" class="fixed inset-0 hidden z-[9999] flex items-center justify-center bg-black/70">
+    <div class="bg-card2 rounded-2xl p-6 shadow-glow text-center w-[90%] max-w-md animate-fadeScale relative">
+      <h2 class="text-xl font-bold mb-3">Dangulo Ads</h2>
+      <iframe id="adFrame" src="https://www.revenuecpmgate.com/rxsj3euh9?key=88dd85ae05c2e05d067a642fe5d8473a"
+              class="w-full h-48 rounded-lg mb-3"></iframe>
+      <p class="text-sm mb-2">Channel itafunguka baada ya sekunde <span id="adTimer">5</span>...</p>
+    </div>
+  </div>
+
+  <!-- Adsterra Direct link-->
+  <script type='text/javascript' src='https://www.revenuecpmgate.com/rxsj3euh9?key=88dd85ae05c2e05d067a642fe5d8473a' async></script>
+
+  <script>
+    const $ = (q, el=document)=> el.querySelector(q);
+    const directLink = "https://www.revenuecpmgate.com/rxsj3euh9?key=88dd85ae05c2e05d067a642fe5d8473a"; // badilisha key hapa
+
+    // THEME TOGGLE
+    $("#themeToggle").onclick = () => document.documentElement.classList.toggle("dark");
+
+    // HERO SLIDER
+    const heroData = [
+      { title:"Football Leagues", img:"https://i.ibb.co/PGgPjtrS/NBC-WEB-ab40a48183f60ed6614d724efd8a35cb.jpg" },
+      { title:"Movies Series", img:"https://i.ibb.co/cSt8Pmqf/The-OTTOMAN-Web-f96b6010180f42b5bcbb4dcad6d7ab3b.jpg" },
+      { title:"Tamthilia Zote", img:"https://i.ibb.co/gZDbF047/kombolela-e8e1af8ff2498aff6aeddc99d26f68a9-3.jpg" }
+    ];
+    let active = 0, timer;
+    function paintHero(){
+      $("#heroSlides").style.background = `url('${heroData[active].img}') center/cover no-repeat`;
+      $("#heroTitle").textContent = heroData[active].title;
+      $("#heroDots").innerHTML = heroData.map((_,i)=>`
+        <span class="w-3 h-3 rounded-full ${i===active ? "bg-accent2" : "bg-white/40"}"></span>
+      `).join('');
+    }
+    function nextHero(){ active = (active + 1) % heroData.length; paintHero(); }
+    function resetHero(){ clearInterval(timer); paintHero(); timer = setInterval(nextHero, 4000); }
+    resetHero();
+
+    // CHANNELS
+    const channelData = [
+      {id:1, name:"Azamsports HD1", logo:"https://i.ibb.co/5gxcwZqB/1754288578453-THUMBNAIL-CHAN.png", link:"https://nairobigossipclub.cocoyoga.online/playvideo.php?video=https%3A%2F%2Fupload255.xyz%2Fuploads%2F68c03f867222b_I%2520fucked%2520my%2520stepmother%2520instead%2520of%2520morning%2520coffee%2520and%2520cum%2520in%2520her%2520mouth.mp4&title=I+fucked+my+stepmother+instead+of+morning+coffee+and+cum+in+her+mouth+"},
+      {id:2, name:"Azamsports HD2", logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png", link:"https://amg01334-beinsportsllc-beinxtra-localnow-kcy6r.amagi.tv/playlistR576p.m3u8"},
+      {id:3, name:"Azamsports HD3", logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png", link:"https://amg01334-beinsportsllc-beinxtra-localnow-kcy6r.amagi.tv/playlistR576p.m3u8"},
+      {id:4, name:"Azamsports HD4", logo:"https://i.ibb.co/3YSFwzVs/1745862410254-Azam-Sports4-HD-poster-Image-1.png", link:"https://amg01334-beinsportsllc-beinxtra-localnow-kcy6r.amagi.tv/playlistR576p.m3u8"}
+    ].map((ch,i)=>({...ch,addedAt:Date.now()-i*3600_000}));
+
+    const grid = $("#channelGrid"), search = $("#channelSearch"), sort = $("#channelSort");
+
+    function card(ch){
+      return `
+        <div data-link="${ch.link}" class="channelCard cursor-pointer tilt group bg-card2 rounded-2xl shadow hover:shadow-glow transition overflow-hidden">
+          <div class="aspect-[3/4] w-full rounded-xl overflow-hidden relative">
+            <img src="${ch.logo}" alt="${ch.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <div class="mt-2 flex items-center justify-between px-2 pb-2">
+            <span class="font-semibold truncate">${ch.name}</span>
+            <span class="text-[11px] px-2 py-1 rounded-lg bg-accent2/20">LIVE</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function render(list){
+      grid.innerHTML = list.map(card).join('');
+      document.querySelectorAll(".channelCard").forEach(card=>{
+        card.addEventListener("click", ()=>showAd(card.dataset.link));
+      });
+    }
+
+    function applyFilters(){
+      const q = search.value.toLowerCase();
+      let list = channelData.filter(c=>c.name.toLowerCase().includes(q));
+      if(sort.value==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
+      else list.sort((a,b)=>b.addedAt - a.addedAt);
+      render(list);
+    }
+    search.oninput = applyFilters; sort.onchange = applyFilters;
+    render(channelData);
+
+    // AD LOGIC
+    function showAd(link){
+      const modal = $("#adModal");
+      modal.classList.remove("hidden");
+      let seconds = 5;
+      $("#adTimer").textContent = seconds;
+      const countdown = setInterval(()=>{
+        seconds--;
+        $("#adTimer").textContent = seconds;
+        if(seconds<=0){
+          clearInterval(countdown);
+          modal.classList.add("hidden");
+          window.open(directLink, "_blank"); // fungua direct link
+          window.location.href = link;       // kisha fungua channel
+        }
+      },1000);
+    }
+  </script>
+</body>
+</html>
