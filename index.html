@@ -52,18 +52,11 @@
   <!-- HEADER -->
   <header class="sticky top-0 z-50 backdrop-blur bg-maxbg/80 border-b border-white/5 animate-fade">
     <div class="max-w-6xl mx-auto px-4 py-2 flex items-center gap-3">
-      
       <div class="ml-auto flex items-center gap-2">
         <button id="themeToggle" class="p-2 rounded-xl hover:bg-white/5" title="Badilisha Theme">🌓</button>
       </div>
     </div>
   </header>
-
-  <!-- 🧩 Adsterra Direct Link-->
-  <div class="max-w-6xl mx-auto px-4 mt-4">
-    <iframe src="https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2"
-            width="100%" height="90" frameborder="0" scrolling="no" class="rounded-lg shadow-glow"></iframe>
-  </div>
 
   <!-- HERO SLIDER -->
   <section id="hero" class="relative animate-fade">
@@ -73,7 +66,6 @@
         <div class="absolute inset-0 bg-gradient-to-t from-maxbg/80 to-transparent"></div>
         <div class="absolute bottom-6 left-6">
           <h2 id="heroTitle" class="text-3xl md:text-5xl font-extrabold drop-shadow"></h2>
-          
         </div>
         <div id="heroDots" class="absolute right-4 bottom-4 flex gap-2"></div>
       </div>
@@ -84,12 +76,6 @@
   <main class="max-w-6xl mx-auto px-4 py-10" id="channels">
     <h3 class="text-2xl font-extrabold mb-4">Tazama Channel za Azam TV & DStv Bure Muda wote</h3>
 
-    <!-- Adsterra Direct Link-->
-    <div class="mb-6">
-      <iframe src="https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2"
-              width="100%" height="60" frameborder="0" scrolling="no" class="rounded-lg shadow-glow"></iframe>
-    </div>
-
     <div class="flex gap-2 mb-4">
       <input id="channelSearch" class="flex-1 bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 ring-accent2/50" placeholder="Search Best Videos..." />
       <select id="channelSort" class="bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none">
@@ -97,14 +83,9 @@
         <option value="recent">Newest</option>
       </select>
     </div>
+
     <div id="channelGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
   </main>
-
-  <!-- 🧩 Adsterra Direct link-->
-  <div class="max-w-6xl mx-auto px-4 mt-10 mb-6">
-    <iframe src="https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2"
-            width="100%" height="90" frameborder="0" scrolling="no" class="rounded-lg shadow-glow"></iframe>
-  </div>
 
   <!-- FOOTER -->
   <footer class="border-t border-white/5">
@@ -113,7 +94,7 @@
     </div>
   </footer>
 
-  <!-- MODAL AD BOX -->
+  <!-- MODAL AD BOX (HILI LINAACHA KAMA LILIVYO) -->
   <div id="adModal" class="fixed inset-0 hidden z-[9999] flex items-center justify-center bg-black/70">
     <div class="bg-card2 rounded-2xl p-6 shadow-glow text-center w-[90%] max-w-md animate-fadeScale relative">
       <h2 class="text-xl font-bold mb-3">Wazamini Wetu</h2>
@@ -123,12 +104,12 @@
     </div>
   </div>
 
-  <!-- Adsterra Direct link-->
+  <!-- Ad Script -->
   <script type='text/javascript' src='https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2' async></script>
 
   <script>
     const $ = (q, el=document)=> el.querySelector(q);
-    const directLink = "https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2"; // badilisha key hapa
+    const directLink = "https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2";
 
     // THEME TOGGLE
     $("#themeToggle").onclick = () => document.documentElement.classList.toggle("dark");
@@ -205,11 +186,11 @@
         if(seconds<=0){
           clearInterval(countdown);
           modal.classList.add("hidden");
-          window.open(directLink, "_blank"); // fungua direct link
-          window.location.href = link;       // kisha fungua channel
+          window.open(directLink, "_blank");
+          window.location.href = link;
         }
       },1000);
     }
   </script>
 </body>
-    </html>
+</html>
