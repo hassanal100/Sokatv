@@ -2,343 +2,218 @@
 <html lang="sw">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DStv Chapu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Soka TV Max</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+    body{background:linear-gradient(180deg,#06142e,#0a1f47);color:#fff;overflow-x:hidden;padding-bottom:70px;}
+    header{position:fixed;top:0;left:0;width:100%;height:60px;display:flex;align-items:center;justify-content:center;
+      background:rgba(8,20,50,0.95);box-shadow:0 3px 15px rgba(0,80,255,0.25);z-index:1000;}
+    header h1{font-size:22px;font-weight:700;color:#3ea6ff;}
 
-    body {
-      background: linear-gradient(180deg, #06142e, #0a1f47);
-      color: #fff;
-      overflow-x: hidden;
-      padding-bottom: 70px;
-    }
+    .slider{position:relative;width:100%;height:220px;overflow:hidden;margin-top:60px;
+      border-radius:0 0 20px 20px;box-shadow:0 8px 25px rgba(0,100,255,0.3);}
+    .slides{display:flex;transition:transform 1s ease-in-out;}
+    .slides img{width:100%;height:220px;object-fit:cover;flex-shrink:0;filter:brightness(0.95) saturate(1.2);}
 
-    /* ===== Header ===== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      background: rgba(8, 20, 50, 0.95);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 3px 15px rgba(0, 80, 255, 0.25);
-      z-index: 1000;
-      animation: fadeInDown 1s ease forwards;
-    }
+    .section-title{font-size:18px;font-weight:600;margin:18px 15px 10px;border-left:4px solid #3ea6ff;
+      padding-left:10px;color:#d0e6ff;text-transform:uppercase;}
 
-    header h1 {
-      font-size: 26px;
-      font-weight: 700;
-      color: #3ea6ff;
-      letter-spacing: 1.5px;
-    }
+    .channel-grid{display:flex;overflow-x:auto;gap:12px;padding:10px 15px 25px;scroll-behavior:smooth;}
+    .channel-grid::-webkit-scrollbar{display:none;}
+    .channel-card{min-width:150px;border-radius:15px;overflow:hidden;background:#0c234b;
+      box-shadow:0 4px 14px rgba(0,120,255,0.25);transition:all 0.35s ease;cursor:pointer;}
+    .channel-card img{width:100%;height:150px;object-fit:cover;transition:transform 0.6s ease,filter 0.3s ease;}
+    .channel-card:hover{transform:scale(1.05);}
+    .channel-card:hover img{transform:scale(1.08);filter:brightness(1.1);}
+    .channel-card h4{text-align:center;font-size:14px;font-weight:500;padding:8px 0;background-color:rgba(10,30,70,0.9);color:#aee1ff;}
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-25px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .bottom-bar{position:fixed;bottom:0;left:0;width:100%;height:60px;background:rgba(8,20,50,0.95);
+      display:flex;justify-content:space-around;align-items:center;border-top:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 -4px 20px rgba(0,120,255,0.2);z-index:9999;}
+    .bottom-bar a{text-decoration:none;color:#aee1ff;font-size:12px;text-align:center;transition:all 0.3s ease;}
+    .bottom-bar a:hover{color:#3ea6ff;transform:scale(1.1);}
+    .bottom-bar i{font-size:20px;display:block;margin-bottom:3px;}
 
-    /* ===== Slider ===== */
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 260px;
-      overflow: hidden;
-      margin-top: 60px;
-      border-radius: 0 0 25px 25px;
-      box-shadow: 0 8px 25px rgba(0, 100, 255, 0.3);
-    }
+    .whatsapp-float{position:fixed;right:15px;bottom:80px;background-color:#25d366;color:white;border-radius:50%;
+      width:55px;height:55px;display:flex;align-items:center;justify-content:center;font-size:26px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.3);z-index:99999;transition:all 0.3s ease;animation:bounce 2s infinite;}
+    .whatsapp-float:hover{transform:scale(1.1);background-color:#20ba5a;}
+    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
-    .slides {
-      display: flex;
-      width: 100%;
-      transition: transform 1s ease-in-out;
-    }
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:10000;}
+    .modal-content{background:#0c234b;padding:25px 20px;border-radius:18px;width:85%;max-width:340px;text-align:center;
+      box-shadow:0 0 25px rgba(0,150,255,0.4);animation:fadeIn 0.5s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
+    .modal-content h3{color:#3ea6ff;margin-bottom:10px;}
+    .modal-content input{width:100%;padding:10px;margin-top:8px;border-radius:10px;border:none;outline:none;
+      text-align:center;background:#0a1e4b;color:#fff;font-size:15px;}
+    .modal-content button{background:#3ea6ff;color:#fff;border:none;padding:10px 20px;border-radius:10px;margin-top:12px;
+      cursor:pointer;transition:all 0.3s;}
+    .modal-content button:hover{background:#2b82e6;}
+    .error{color:#ff6b6b;font-size:14px;margin-top:8px;}
 
-    .slides img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      object-position: center;
-      flex-shrink: 0;
-      filter: brightness(0.95) saturate(1.2);
-    }
+    #playerModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.9);z-index:10001;justify-content:center;align-items:center;flex-direction:column;}
+    #playerModal video,#playerModal iframe{width:90%;max-width:600px;height:320px;border-radius:12px;box-shadow:0 0 25px rgba(0,150,255,0.4);}
+    #closePlayer{margin-top:15px;background:#3ea6ff;border:none;color:#fff;padding:10px 20px;border-radius:8px;cursor:pointer;}
+    #closePlayer:hover{background:#2b82e6;}
 
-    .slider::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      background: linear-gradient(to top, rgba(6, 20, 46, 1), transparent);
-    }
-
-    /* ===== Section Title ===== */
-    .section-title {
-      font-size: 20px;
-      font-weight: 600;
-      margin: 20px 15px 10px;
-      border-left: 4px solid #3ea6ff;
-      padding-left: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #d0e6ff;
-    }
-
-    /* ===== Channel Grid ===== */
-    .channel-grid {
-      display: flex;
-      overflow-x: auto;
-      gap: 15px;
-      padding: 10px 15px 25px;
-      scroll-behavior: smooth;
-    }
-
-    .channel-card {
-      min-width: 170px;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #0c234b;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0, 120, 255, 0.25);
-      transition: all 0.35s ease;
-    }
-
-    .channel-card:hover {
-      transform: scale(1.07);
-      box-shadow: 0 6px 25px rgba(0, 153, 255, 0.5);
-    }
-
-    .channel-card img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease, filter 0.3s ease;
-    }
-
-    .channel-card:hover img {
-      transform: scale(1.1);
-      filter: brightness(1.1);
-    }
-
-    .channel-card h4 {
-      text-align: center;
-      font-size: 15px;
-      font-weight: 500;
-      padding: 8px 0;
-      background-color: rgba(10, 30, 70, 0.9);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: #aee1ff;
-    }
-
-    .channel-grid::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* ===== Bottom Bar ===== */
-    .bottom-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: rgba(8, 20, 50, 0.95);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 -4px 20px rgba(0, 120, 255, 0.2);
-      z-index: 9999;
-    }
-
-    .bottom-bar a {
-      text-decoration: none;
-      color: #aee1ff;
-      font-size: 13px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .bottom-bar a:hover {
-      color: #3ea6ff;
-      transform: scale(1.1);
-    }
-
-    .bottom-bar i {
-      font-size: 22px;
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    /* ===== WhatsApp Button ===== */
-    .whatsapp-float {
-      position: fixed;
-      right: 20px;
-      bottom: 80px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 58px;
-      height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 99999;
-      transition: all 0.3s ease;
-      animation: bounce 2s infinite;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      background-color: #20ba5a;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    /* ===== Responsive Design ===== */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 20px;
-      }
-
-      .slider {
-        height: 200px;
-      }
-
-      .slides img {
-        height: 200px;
-      }
-
-      .section-title {
-        font-size: 16px;
-        margin: 15px 12px 8px;
-      }
-
-      .channel-card {
-        min-width: 140px;
-      }
-
-      .channel-card img {
-        height: 140px;
-      }
-
-      .channel-card h4 {
-        font-size: 13px;
-        padding: 6px 0;
-      }
-
-      .whatsapp-float {
-        width: 52px;
-        height: 52px;
-        font-size: 25px;
-        bottom: 75px;
-        right: 15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .slider {
-        height: 180px;
-      }
-
-      .slides img {
-        height: 180px;
-      }
-
-      .channel-card {
-        min-width: 130px;
-      }
-
-      .channel-card img {
-        height: 130px;
-      }
-
-      .section-title {
-        font-size: 15px;
-      }
+    @media (max-width:480px){
+      header h1{font-size:20px;}
+      .slider{height:200px;}
+      .slides img{height:200px;}
+      .channel-card{min-width:135px;}
+      .channel-card img{height:135px;}
     }
   </style>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <header><h1>Mpira TV Max</h1></header>
+  <header><h1>Soka TV Max</h1></header>
 
-  <!-- ===== Slider ===== -->
+  <!-- Slider -->
   <div class="slider">
     <div class="slides" id="slides">
-      <img src="https://iili.io/K4gtsjV.png" alt="slide1">
-      <img src="https://iili.io/K4gbD7a.png" alt="slide2">
-      <img src="https://iili.io/K4gmeQp.png" alt="slide3">
-      <img src="https://iili.io/K4rf6hX.png" alt="slide4">
-      <img src="https://iili.io/K4rBLJ4.png" alt="slide5">
+      <img src="https://iili.io/K4gtsjV.png">
+      <img src="https://iili.io/K4gbD7a.png">
+      <img src="https://iili.io/K4gmeQp.png">
+      <img src="https://iili.io/K4rf6hX.png">
+      <img src="https://iili.io/K4rBLJ4.png">
     </div>
   </div>
 
+  <!-- Trending -->
   <h3 class="section-title">🔥 Trending Channels</h3>
   <div class="channel-grid">
-    <div class="channel-card"><img src="https://iili.io/K4rjfln.png"><h4>Azamsports HD1</h4></div>
-    <div class="channel-card"><img src="https://iili.io/K44NMdX.png"><h4>Azamsports HD2</h4></div>
-    <div class="channel-card"><img src="https://iili.io/K44nrdb.png"><h4>Azamsports HD3</h4></div>
+    <div class="channel-card" data-link="http://front-main.eagle-4k.me/live/9fshhuw2z7/54hw7lwwb1/262954.m3u8"><img src="https://iili.io/K4rjfln.png"><h4>Azamsports HD1</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/y6120QOlsfU"><img src="https://iili.io/K44NMdX.png"><h4>Azamsports HD2</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/ScMzIvxBSi4"><img src="https://iili.io/K44nrdb.png"><h4>Azamsports HD3</h4></div>
   </div>
 
+  <!-- Sports -->
   <h3 class="section-title">⚽ Sports Channels</h3>
   <div class="channel-grid">
-    <div class="channel-card"><img src="https://iili.io/K44gzHN.png"><h4>Sinemazetu</h4></div>
-    <div class="channel-card"><img src="https://iili.io/K44tNQp.png"><h4>Azam Two</h4></div>
-    <div class="channel-card"><img src="https://iili.io/K46JumF.png"><h4>Crown TV</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/dQw4w9WgXcQ"><img src="https://iili.io/K44gzHN.png"><h4>Sinemazetu</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/zpOULjyy-n8"><img src="https://iili.io/K44tNQp.png"><h4>Azam Two</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/V-_O7nl0Ii0"><img src="https://iili.io/K46JumF.png"><h4>Crown TV</h4></div>
   </div>
 
+  <!-- News -->
   <h3 class="section-title">📰 News Channels</h3>
   <div class="channel-grid">
-    <div class="channel-card"><img src="https://iili.io/K46Cn1e.png"><h4>ZBC 2</h4></div>
-    <div class="channel-card"><img src="https://i.ibb.co/rbzs8G6/20250108-054630.png"><h4>Wasafi TV</h4></div>
-    <div class="channel-card"><img src="https://i.ibb.co/CnKdVK4/20250108-054736.png"><h4>Cheka Plus</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/ysz5S6PUM-U"><img src="https://iili.io/K46Cn1e.png"><h4>ZBC 2</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/q6EoRBvdVPQ"><img src="https://i.ibb.co/rbzs8G6/20250108-054630.png"><h4>Wasafi TV</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/5NV6Rdv1a3I"><img src="https://i.ibb.co/CnKdVK4/20250108-054736.png"><h4>Cheka Plus</h4></div>
   </div>
 
-  <h3 class="section-title">🎬 Movie Channels</h3>
+  <!-- Movies -->
+  <h3 class="section-title">🏆 Super Sports DStv</h3>
   <div class="channel-grid">
-    <div class="channel-card"><img src="https://i.ibb.co/d03fG3hQ/KIX-6879986b54d3de9903a0657d60de02ff.png"><h4>KIX</h4></div>
-    <div class="channel-card"><img src="https://i.ibb.co/qsDDmPq/20250108-053746.png"><h4>Maisha MAGIC</h4></div>
-    <div class="channel-card"><img src="https://i.ibb.co/5KSzzvd/20250108-060716.png"><h4>Super Sports</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/uelHwf8o7_U"><img src="https://i.ibb.co/d03fG3hQ/KIX-6879986b54d3de9903a0657d60de02ff.png"><h4>KIX</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/9bZkp7q19f0"><img src="https://i.postimg.cc/2j9gxSRq/ezgif-3e450caa3efd2f.gif"><h4>Super sports1</h4></div>
+    <div class="channel-card" data-link="https://www.youtube.com/embed/tgbNymZ7vqY"><img src="https://i.ibb.co/wFqccTPr/ezgif-8bc158797d7fdd.gif"><h4>Super Sports2</h4></div>
   </div>
 
-  <!-- Bottom Navigation -->
+  <!-- Bottom Bar -->
   <div class="bottom-bar">
-    <a href="https://hassanal100.github.io/Sokatv/" target="_blank"><i class="fas fa-home"></i>Home</a>
-    <a href="https://hassanal100.github.io/AdsPush/" target="_blank"><i class="fas fa-credit-card"></i>Pay Now</a>
+    <a href="#"><i class="fas fa-home"></i>Nyumbani</a>
+    <a href="#" id="payBtn"><i class="fas fa-credit-card"></i>Lipia</a>
   </div>
 
   <!-- WhatsApp -->
-  <a href="https://wa.me/255712345678?text=Habari%2C%20Nahitaji%20Kulipia%20Soka%20TV%20Max" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://wa.me/255746953199?text=Habari%20ninaomba%20Password%20ya%20SokaTV%20Max" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- Modals -->
+  <div class="modal" id="passwordModal">
+    <div class="modal-content">
+      <h3>Ingiza Password Ulio Pewa Baada ya Malipo 🔑</h3>
+      <input type="password" id="passwordInput" placeholder="Weka Password..." />
+      <p class="error" id="errorMsg"></p>
+      <button id="confirmBtn">Fungua Channel</button>
+    </div>
+  </div>
+
+  <div id="playerModal">
+    <video id="videoPlayer" controls></video>
+    <iframe id="ytPlayer" frameborder="0" allowfullscreen></iframe>
+    <button id="closePlayer">Funga</button>
+  </div>
 
   <script>
-    const slides = document.getElementById('slides');
-    const images = slides.querySelectorAll('img');
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }, 3000);
+    // Slider
+    const slides=document.getElementById('slides');
+    const imgs=slides.querySelectorAll('img');
+    let idx=0;
+    setInterval(()=>{idx=(idx+1)%imgs.length;slides.style.transform=`translateX(-${idx*100}%)`;},3000);
+
+    // Password Modal
+    const modal=document.getElementById('passwordModal');
+    const input=document.getElementById('passwordInput');
+    const errorMsg=document.getElementById('errorMsg');
+    const confirmBtn=document.getElementById('confirmBtn');
+    let currentLink="";
+
+    document.querySelectorAll('.channel-card').forEach(card=>{
+      card.onclick=()=>{
+        currentLink=card.dataset.link;
+        modal.style.display='flex';
+        input.value='';errorMsg.textContent='';
+      };
+    });
+
+    confirmBtn.onclick=()=>{
+      if(input.value.trim()==='SOKAID'){
+        modal.style.display='none';
+        openPlayer(currentLink);
+      }else{
+        errorMsg.textContent="Password si sahihi ⚠️ Tafadhali lipia kifurushi.";
+      }
+    };
+    modal.onclick=e=>{if(e.target===modal)modal.style.display='none';};
+
+    // Player
+    const playerModal=document.getElementById('playerModal');
+    const video=document.getElementById('videoPlayer');
+    const yt=document.getElementById('ytPlayer');
+    const closePlayer=document.getElementById('closePlayer');
+
+    function openPlayer(link){
+      playerModal.style.display='flex';
+      video.style.display='none';
+      yt.style.display='none';
+      if(link.includes('.m3u8')){
+        video.style.display='block';
+        if(Hls.isSupported()){
+          const hls=new Hls();
+          hls.loadSource(link);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play());
+        }else if(video.canPlayType('application/vnd.apple.mpegurl')){
+          video.src=link;video.play();
+        }else{
+          alert("Browser haitsupport M3U8 playback.");
+        }
+      }else if(link.includes('youtube.com')){
+        yt.style.display='block';
+        yt.src=link+"?autoplay=1";
+      }
+    }
+
+    closePlayer.onclick=()=>{
+      playerModal.style.display='none';
+      video.pause(); video.src='';
+      yt.src='';
+    };
+
+    // Lipia button open link
+    document.getElementById('payBtn').addEventListener('click',()=>{
+      window.open("https://hassanal100.github.io/AdsPush/", "_blank"); // weka link yako hapa
+    });
   </script>
 </body>
 </html>
