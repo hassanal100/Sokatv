@@ -2,95 +2,101 @@
 <html lang="sw" class="scroll-smooth">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title>Soka TV Max</title>
 <meta name="theme-color" content="#0f1720" />
 <link rel="icon" href="https://img.icons8.com/fluency/48/play-button-circled.png"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        colors: {
-          maxbg: "#0f1720",
-          maxcard: "#111827",
-          card2: "#1b2430",
-          accent1: "#ff3657",
-          accent2: "#08e0ff"
-        },
-        boxShadow: {
-          glow: "0 0 25px rgba(8,224,255,.35)"
-        },
-        animation: {
-          shimmer: "shimmer 2s infinite",
-          fade: "fadeIn 0.5s ease-out"
-        },
-        keyframes: {
-          shimmer: { "0%":{backgroundPosition:"-200% 0"}, "100%":{backgroundPosition:"200% 0"} },
-          fade: { "0%":{opacity:0, transform:"translateY(8px)"}, "100%":{opacity:1, transform:"translateY(0)"} }
-        }
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        maxbg: "#0f1720",
+        maxcard: "#111827",
+        card2: "#1b2430",
+        accent1: "#ff3657",
+        accent2: "#08e0ff"
+      },
+      boxShadow: {
+        glow: "0 0 25px rgba(8,224,255,.35)"
+      },
+      animation: {
+        shimmer: "shimmer 2s infinite",
+        fade: "fadeIn 0.5s ease-out"
+      },
+      keyframes: {
+        shimmer: { "0%":{backgroundPosition:"-200% 0"}, "100%":{backgroundPosition:"200% 0"} },
+        fade: { "0%":{opacity:0, transform:"translateY(8px)"}, "100%":{opacity:1, transform:"translateY(0)"} }
       }
     }
   }
+}
 </script>
 <style>
-  *{font-family: Inter, system-ui, Segoe UI}
-  .hide-scroll::-webkit-scrollbar{display:none}
-  .tilt:hover{transform:rotateX(6deg) rotateY(-6deg) scale(1.03)}
+*{font-family: Inter, system-ui, Segoe UI}
+.hide-scroll::-webkit-scrollbar{display:none}
+.tilt:hover{transform:rotateX(6deg) rotateY(-6deg) scale(1.03)}
+html, body {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+img, video, iframe {max-width: 100%; height: auto;}
 </style>
 </head>
-<body class="bg-maxbg text-white relative pb-20">
+<body class="bg-maxbg text-white relative pb-24 sm:pb-20">
 
 <!-- HEADER -->
 <header class="sticky top-0 z-50 backdrop-blur bg-maxbg/80 border-b border-white/5 animate-fade">
-  <div class="max-w-6xl mx-auto px-4 py-2 flex items-center gap-3">
-    <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent">MAX</span>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
+    <span class="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent">Soka TV Max</span>
     <div class="ml-auto flex items-center gap-2">
-      <button id="themeToggle" class="p-2 rounded-xl hover:bg-white/5" title="Theme">🌓</button>
+      <button id="themeToggle" class="p-2 rounded-xl hover:bg-white/5 text-lg" title="Theme">🌓</button>
     </div>
   </div>
 </header>
 
 <!-- HERO SLIDER -->
 <section id="hero" class="relative animate-fade">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="relative overflow-hidden rounded-3xl mt-4 shadow-glow h-[240px] sm:h-[320px] md:h-[400px]">
+  <div class="max-w-6xl mx-auto px-3 sm:px-6">
+    <div class="relative overflow-hidden rounded-3xl mt-3 sm:mt-5 shadow-glow h-[200px] sm:h-[280px] md:h-[380px]">
       <div id="heroSlides" class="h-full w-full transition-all duration-700"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-maxbg/80 to-transparent"></div>
-      <div class="absolute bottom-6 left-6">
-        <h2 id="heroTitle" class="text-3xl md:text-5xl font-extrabold drop-shadow"></h2>
-        <button id="watchBtn" class="mt-3 px-5 py-2.5 rounded-xl bg-gradient-to-r from-accent1 to-accent2 font-semibold hover:scale-105 transition">▶ Tazama</button>
+      <div class="absolute bottom-5 left-4 sm:bottom-8 sm:left-6">
+        <h2 id="heroTitle" class="text-2xl sm:text-4xl md:text-5xl font-extrabold drop-shadow leading-tight"></h2>
+        <button id="watchBtn" class="mt-3 px-4 sm:px-6 py-2.5 rounded-xl bg-gradient-to-r from-accent1 to-accent2 font-semibold hover:scale-105 transition text-sm sm:text-base">▶ Tazama</button>
       </div>
-      <div id="heroDots" class="absolute right-4 bottom-4 flex gap-2"></div>
+      <div id="heroDots" class="absolute right-3 bottom-3 sm:right-5 sm:bottom-5 flex gap-2"></div>
     </div>
   </div>
 </section>
 
 <!-- CHANNELS -->
-<main class="max-w-6xl mx-auto px-4 py-10" id="channels">
-  <h3 class="text-2xl font-extrabold mb-4">Soka TV Max Channels</h3>
-  <div class="flex gap-2 mb-4">
+<main class="max-w-6xl mx-auto px-3 sm:px-6 py-8 sm:py-10" id="channels">
+  <h3 class="text-xl sm:text-2xl font-extrabold mb-4">Soka TV Max Channels</h3>
+  <div class="flex flex-col sm:flex-row gap-2 mb-4">
     <input id="channelSearch" class="flex-1 bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 ring-accent2/50" placeholder="Tafuta Channel..." />
     <select id="channelSort" class="bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none">
       <option value="name">A–Z</option>
       <option value="recent">Newest</option>
     </select>
   </div>
-  <div id="channelGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
+  <div id="channelGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4"></div>
 </main>
 
 <!-- BOTTOM NAV -->
-<nav class="fixed bottom-3 left-1/2 -translate-x-1/2 bg-card2/80 backdrop-blur-xl shadow-glow border border-white/10 rounded-2xl flex justify-around items-center w-[90%] max-w-sm py-2 z-50">
-  <button id="homeBtn" class="flex flex-col items-center text-xs text-gray-300 hover:text-accent2 transition">
+<nav class="fixed bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 bg-card2/80 backdrop-blur-xl shadow-glow border border-white/10 rounded-2xl flex justify-around items-center w-[95%] sm:w-[90%] max-w-sm py-2 z-50 select-none">
+  <button id="homeBtn" class="flex flex-col items-center text-[11px] sm:text-xs text-gray-300 hover:text-accent2 transition">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M4 10v10h16V10"/>
     </svg>
-    Home
+    Nyumbani
   </button>
 
   <a href="https://hassanal100.github.io/AdsPush/" target="_blank" rel="noopener noreferrer"
-     class="flex flex-col items-center text-xs text-gray-300 hover:text-accent1 transition">
+     class="flex flex-col items-center text-[11px] sm:text-xs text-gray-300 hover:text-accent1 transition">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M12 8c-1.657 0-3 1.343-3 3h6c0-1.657-1.343-3-3-3zm0 8v-4m0 0H9m3 0h3m5-4h-2a9 9 0 11-18 0H3"/>
@@ -100,9 +106,9 @@
 </nav>
 
 <!-- PASSWORD MODAL -->
-<div id="passModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[999]">
-  <div class="bg-card2 p-5 rounded-xl w-80 text-center shadow-glow animate-fade">
-    <h3 class="text-lg font-bold mb-3">Weka Password Kufungua Channel</h3>
+<div id="passModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[999] px-4">
+  <div class="bg-card2 p-5 rounded-xl w-full max-w-xs sm:max-w-sm text-center shadow-glow animate-fade">
+    <h3 class="text-base sm:text-lg font-bold mb-3">Weka Password Kufungua Channel</h3>
     <input id="passInput" type="password" placeholder="Ingiza Password"
       class="w-full px-3 py-2 rounded-lg bg-maxcard outline-none text-sm mb-3 text-center" />
     <p id="passError" class="text-red-500 text-xs mb-2 hidden">Tafadhali Weka Pasword Sahihi! Lipia Kifurushi Kupata Pasword yako.</p>
@@ -115,8 +121,6 @@
 
 <script>
 const $ = (q, el=document)=> el.querySelector(q);
-
-// THEME TOGGLE
 $("#themeToggle").onclick=()=>document.documentElement.classList.toggle("dark");
 
 // HERO SLIDER
@@ -129,14 +133,16 @@ let active=0,timer;
 function paintHero(){
   $("#heroSlides").style.background=`url('${heroData[active].img}') center/cover no-repeat`;
   $("#heroTitle").textContent=heroData[active].title;
-  $("#heroDots").innerHTML=heroData.map((_,i)=>`<span class="w-3 h-3 rounded-full ${i===active?"bg-accent2":"bg-white/40"}"></span>`).join('');
+  $("#heroDots").innerHTML=heroData.map((_,i)=>`<span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${i===active?"bg-accent2":"bg-white/40"}"></span>`).join('');
 }
 function nextHero(){active=(active+1)%heroData.length;paintHero();}
 function resetHero(){clearInterval(timer);paintHero();timer=setInterval(nextHero,4000);}
 resetHero();
 
-// CHANNELS
+
+// CHANNELS DATA
 const channelData=[
+  
   {id:1, name:"Azamsports HD1", logo:"https://i.ibb.co/5gxcwZqB/1754288578453-THUMBNAIL-CHAN.png"},
   {id:2, name:"Azamsports HD2", logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png"},
   {id:3, name:"Azamsports HD3", logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png"},
@@ -172,6 +178,7 @@ const channelData=[
   {id:33, name:"FIXFOX", logo:"https://i.ibb.co/wbNzQF2/FIxi-Foxi-32a9b842ec4b06a33dbc9fbd5d610ff4-1.png"},
   {id:34, name:"Nickelodeon", logo:"https://i.ibb.co/RpfnkMxL/Nickelodeon-c94907e26fe2632f9719d79c97c93da3-1.png"},
   {id:35, name:"Cartoon", logo:"https://i.ibb.co/whGgynP5/1745862280238-Catoon-Network-poster-Image.png"}
+  
 ].map((ch,i)=>({...ch,addedAt:Date.now()-i*3600_000}));
 
 const grid=$("#channelGrid"),search=$("#channelSearch"),sort=$("#channelSort");
@@ -181,9 +188,9 @@ function card(ch){
       <img src="${ch.logo}" alt="${ch.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
     </div>
-    <div class="mt-2 flex items-center justify-between px-2 pb-2">
-      <span class="font-semibold truncate">${ch.name}</span>
-      <span class="text-[11px] px-2 py-1 rounded-lg bg-accent2/20">LIVE</span>
+    <div class="mt-1 sm:mt-2 flex items-center justify-between px-2 pb-2">
+      <span class="font-semibold text-[13px] sm:text-sm truncate">${ch.name}</span>
+      <span class="text-[10px] sm:text-[11px] px-2 py-1 rounded-lg bg-accent2/20">LIVE</span>
     </div>
   </button>`;
 }
@@ -198,10 +205,9 @@ function applyFilters(){
 search.oninput=applyFilters; sort.onchange=applyFilters;
 render(channelData);
 
-// CHANNEL CLICK + PASSWORD LOGIC
+// PASSWORD
 let selectedChannel=null;
 const correctPassword="Saka255";
-
 grid.addEventListener("click", e=>{
   const btn=e.target.closest("button[data-id]");
   if(!btn) return;
@@ -210,19 +216,14 @@ grid.addEventListener("click", e=>{
   $("#passInput").value="";
   $("#passError").classList.add("hidden");
 });
-
 $("#submitPass").onclick=()=>{
   const entered=$("#passInput").value.trim();
   if(entered===correctPassword){
     $("#passModal").classList.add("hidden");
     window.open(`https://mpirawetu.com/player?ch=${encodeURIComponent(selectedChannel.name)}`,"_blank");
-  } else {
-    $("#passError").classList.remove("hidden");
-  }
+  } else $("#passError").classList.remove("hidden");
 };
 $("#closeModal").onclick=()=>$("#passModal").classList.add("hidden");
-
-// BOTTOM NAV BUTTONS
 $("#homeBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 </script>
 </body>
