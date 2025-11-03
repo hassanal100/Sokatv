@@ -139,46 +139,39 @@ function nextHero(){active=(active+1)%heroData.length;paintHero();}
 function resetHero(){clearInterval(timer);paintHero();timer=setInterval(nextHero,4000);}
 resetHero();
 
-
 // CHANNELS DATA
 const channelData=[
-  
-  {id:1, name:"Azamsports HD1", logo:"https://i.ibb.co/5gxcwZqB/1754288578453-THUMBNAIL-CHAN.png"},
-  {id:2, name:"Azamsports HD2", logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png"},
-  {id:3, name:"Azamsports HD3", logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png"},
-  {id:4, name:"Azamsports HD4", logo:"https://i.ibb.co/3YSFwzVs/1745862410254-Azam-Sports4-HD-poster-Image-1.png"},
-  {id:5, name:"Azam One", logo:"https://i.ibb.co/Hf0GZpCk/1753287894295-Minesof-Passion.png"},
-  {id:6, name:"Azam Two", logo:"https://i.ibb.co/DHxS2Hbk/THUMBNAIL-CRYSTAL-LOGO-97851dbf6555ae1ab8f8be034d1cf43c.png"},
-  {id:7, name:"Sinemazetu", logo:"https://i.ibb.co/xqttb42S/1754053142170-Sinemazetu-Poster-Image.png"},
-  {id:8, name:"UTV", logo:"https://i.ibb.co/TBGXS4Yz/1745861815665-UTVHD-poster-Image-1.png"},
-  {id:9, name:"WASAFI", logo:"https://i.ibb.co/0yLRfQcy/1745862042988-WASAFITV-poster-Image.png"},
-  {id:10, name:"CROWN TV", logo:"https://i.ibb.co/zTdWNF8D/1745514813150-Crown-TVPoster-Image.png"},
-  {id:11, name:"Cheka Plus", logo:"https://i.ibb.co/ksB2rHLp/1746270439707-Cheka-Plus-TV-poster-Image.png"},
-  {id:12, name:"Zamaradi TV", logo:"https://i.ibb.co/wZhqnNZy/1752573163243-Zamaradi-poster-Imagecopy.png"},
-  {id:13, name:"Base", logo:"https://i.ibb.co/SDvp89PC/1746293544419-MTVBase-poster-Image.png"},
-  {id:14, name:"KIX", logo:"https://i.ibb.co/Q7cR0DMN/1745861711450-KIXMovies-poster-Image.png"},
-  {id:15, name:"ZBC", logo:"https://i.ibb.co/gFgqbXpJ/1752573203869-ZBC-poster-Imagecopy3.png"},
-  {id:16, name:"Arise & Shine", logo:"https://i.ibb.co/2f0WTDB/1754312188774-Ariseand-Shine-poster-Imagecopy2.png"},
-  {id:17, name:"Hope TV", logo:"https://i.ibb.co/Jw7JJyjK/1754294061223-Hope-Channel.png"},
-  {id:18, name:"TV Imani", logo:"https://i.ibb.co/N2XtTbnT/1754311969660-Tv-Imaan-poster-Image.png"},
-  {id:19, name:"Bukedde 1", logo:"https://i.ibb.co/v6fZG4JN/1752572068822-Bukedde1-poster-Image-1.png"},
-  {id:20, name:"Bukedde 2", logo:"https://i.ibb.co/3PzrqZ1/1752572104107-Bukedde2-poster-Image-1.png"},
-  {id:21, name:"TBC", logo:"https://i.ibb.co/gLckv6xh/20250817-154738.png"},
-  {id:22, name:"ITV", logo:"https://i.ibb.co/RkwnP0v4/20250817-155306.jpg"},
-  {id:23, name:"EATV", logo:"https://i.ibb.co/JjkGDHYz/20250817-160105.jpg"},
-  {id:24, name:"Safari Channel", logo:"https://i.ibb.co/zWRPrYM1/image-search-1749678167328.png"},
-  {id:25, name:"Super Sports 1", logo:"https://i.ibb.co/m4Y3dZP/20250108-061205.png"},
-  {id:26, name:"Super Sports 2", logo:"https://i.ibb.co/6n9mFDw/20250108-060659.png"},
-  {id:27, name:"Super Sports 3", logo:"https://i.ibb.co/5KSzzvd/20250108-060716.png"},
-  {id:28, name:"Super Sports 4", logo:"https://i.ibb.co/JjxY6qM/20250108-060734.png"},
-  {id:29, name:"Vacation", logo:"https://i.ibb.co/MWGQbDr/1753346086062-Whats-App-Image2025-06-02at12-35-131-1.png"},
-  {id:30, name:"Kombolela", logo:"https://i.ibb.co/sJH09JtM/1749723392865-Kombolela-poster-Imagecopy-1.png"},
-  {id:31, name:"TUFANI", logo:"https://i.ibb.co/N6v5G6NS/1748000522728-TUFANI-POSTERIMAGE.png"},
-  {id:32, name:"MAISHA MAGIC", logo:"https://i.ibb.co/n8jvgk5L/image-search-1748592235295.png"},
-  {id:33, name:"FIXFOX", logo:"https://i.ibb.co/wbNzQF2/FIxi-Foxi-32a9b842ec4b06a33dbc9fbd5d610ff4-1.png"},
-  {id:34, name:"Nickelodeon", logo:"https://i.ibb.co/RpfnkMxL/Nickelodeon-c94907e26fe2632f9719d79c97c93da3-1.png"},
-  {id:35, name:"Cartoon", logo:"https://i.ibb.co/whGgynP5/1745862280238-Catoon-Network-poster-Image.png"}
-  
+  {id:1,name:"Azamsports HD1",logo:"https://i.ibb.co/5gxcwZqB/1754288578453-THUMBNAIL-CHAN.png",link:"https://example.com/azamsports1.m3u8"},
+  {id:2,name:"Azamsports HD2",logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png",link:"https://example.com/azamsports2.m3u8"},
+  {id:3,name:"Azamsports HD3",logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png",link:"https://example.com/azamsports3.m3u8"},
+  {id:4,name:"Azamsports HD4",logo:"https://i.ibb.co/3YSFwzVs/1745862410254-Azam-Sports4-HD-poster-Image-1.png",link:"https://example.com/azamsports4.m3u8"},
+  {id:5,name:"Azam One",logo:"https://i.ibb.co/Hf0GZpCk/1753287894295-Minesof-Passion.png",link:"https://example.com/azamone.m3u8"},
+  {id:6,name:"Azam Two",logo:"https://i.ibb.co/DHxS2Hbk/THUMBNAIL-CRYSTAL-LOGO-97851dbf6555ae1ab8f8be034d1cf43c.png",link:"https://example.com/azamtwo.m3u8"},
+  {id:7,name:"Sinemazetu",logo:"https://i.ibb.co/xqttb42S/1754053142170-Sinemazetu-Poster-Image.png",link:"https://example.com/sinemazetu.m3u8"},
+  {id:8,name:"UTV",logo:"https://i.ibb.co/TBGXS4Yz/1745861815665-UTVHD-poster-Image-1.png",link:"https://example.com/utv.m3u8"},
+  {id:9,name:"WASAFI",logo:"https://i.ibb.co/0yLRfQcy/1745862042988-WASAFITV-poster-Image.png",link:"https://example.com/wasafi.m3u8"},
+  {id:10,name:"CROWN TV",logo:"https://i.ibb.co/zTdWNF8D/1745514813150-Crown-TVPoster-Image.png",link:"https://example.com/crowntv.m3u8"},
+  {id:11,name:"Cheka Plus",logo:"https://i.ibb.co/ksB2rHLp/1746270439707-Cheka-Plus-TV-poster-Image.png",link:"https://example.com/chekaplus.m3u8"},
+  {id:12,name:"Zamaradi TV",logo:"https://i.ibb.co/wZhqnNZy/1752573163243-Zamaradi-poster-Imagecopy.png",link:"https://example.com/zamaradi.m3u8"},
+  {id:13,name:"Base",logo:"https://i.ibb.co/SDvp89PC/1746293544419-MTVBase-poster-Image.png",link:"https://example.com/base.m3u8"},
+  {id:14,name:"KIX",logo:"https://i.ibb.co/Q7cR0DMN/1745861711450-KIXMovies-poster-Image.png",link:"https://example.com/kix.m3u8"},
+  {id:15,name:"ZBC",logo:"https://i.ibb.co/gFgqbXpJ/1752573203869-ZBC-poster-Imagecopy3.png",link:"https://example.com/zbc.m3u8"},
+  {id:16,name:"Arise & Shine",logo:"https://i.ibb.co/2f0WTDB/1754312188774-Ariseand-Shine-poster-Imagecopy2.png",link:"https://example.com/ariseandshine.m3u8"},
+  {id:17,name:"Hope TV",logo:"https://i.ibb.co/Jw7JJyjK/1754294061223-Hope-Channel.png",link:"https://example.com/hopetv.m3u8"},
+  {id:18,name:"TV Imani",logo:"https://i.ibb.co/N2XtTbnT/1754311969660-Tv-Imaan-poster-Image.png",link:"https://example.com/tvimani.m3u8"},
+  {id:19,name:"Bukedde 1",logo:"https://i.ibb.co/v6fZG4JN/1752572068822-Bukedde1-poster-Image-1.png",link:"https://example.com/bukedde1.m3u8"},
+  {id:20,name:"Bukedde 2",logo:"https://i.ibb.co/3PzrqZ1/1752572104107-Bukedde2-poster-Image-1.png",link:"https://example.com/bukedde2.m3u8"},
+  {id:21,name:"TBC",logo:"https://i.ibb.co/gLckv6xh/20250817-154738.png",link:"https://example.com/tbc.m3u8"},
+  {id:22,name:"ITV",logo:"https://i.ibb.co/RkwnP0v4/20250817-155306.jpg",link:"https://example.com/itv.m3u8"},
+  {id:23,name:"EATV",logo:"https://i.ibb.co/JjkGDHYz/20250817-160105.jpg",link:"https://example.com/eatv.m3u8"},
+  {id:24,name:"Safari Channel",logo:"https://i.ibb.co/zWRPrYM1/image-search-1749678167328.png",link:"https://example.com/safari.m3u8"},
+  {id:25,name:"Super Sports 1",logo:"https://i.ibb.co/m4Y3dZP/20250108-061205.png",link:"https://example.com/supersports1.m3u8"},
+  {id:26,name:"Super Sports 2",logo:"https://i.ibb.co/6n9mFDw/20250108-060659.png",link:"https://example.com/supersports2.m3u8"},
+  {id:27,name:"Super Sports 3",logo:"https://i.ibb.co/5KSzzvd/20250108-060716.png",link:"https://example.com/supersports3.m3u8"},
+  {id:28,name:"Super Sports 4",logo:"https://i.ibb.co/JjxY6qM/20250108-060734.png",link:"https://example.com/supersports4.m3u8"},
+  {id:29,name:"Maisha MAGIC",logo:"https://i.ibb.co/n8jvgk5L/image-search-1748592235295.png",link:"https://example.com/vacation.m3u8"},
+  {id:30,name:"LALIGA",logo:"https://i.ibb.co/wFqccTPr/ezgif-8bc158797d7fdd.gif",link:"https://example.com/kombolela.m3u8"},
+  {id:31,name:"UEFA",logo:"https://i.postimg.cc/2j9gxSRq/ezgif-3e450caa3efd2f.gif",link:"https://example.com/tufani.m3u8"}
 ].map((ch,i)=>({...ch,addedAt:Date.now()-i*3600_000}));
 
 const grid=$("#channelGrid"),search=$("#channelSearch"),sort=$("#channelSort");
@@ -205,7 +198,7 @@ function applyFilters(){
 search.oninput=applyFilters; sort.onchange=applyFilters;
 render(channelData);
 
-// PASSWORD
+// PASSWORD SYSTEM
 let selectedChannel=null;
 const correctPassword="Saka255";
 grid.addEventListener("click", e=>{
@@ -220,11 +213,11 @@ $("#submitPass").onclick=()=>{
   const entered=$("#passInput").value.trim();
   if(entered===correctPassword){
     $("#passModal").classList.add("hidden");
-    window.open(`https://mpirawetu.com/player?ch=${encodeURIComponent(selectedChannel.name)}`,"_blank");
+    window.open(selectedChannel.link,"_blank");
   } else $("#passError").classList.remove("hidden");
 };
 $("#closeModal").onclick=()=>$("#passModal").classList.add("hidden");
 $("#homeBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 </script>
 </body>
-</html>
+      </html>
