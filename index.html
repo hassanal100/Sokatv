@@ -101,7 +101,7 @@ img, video, iframe {max-width: 100%; height: auto;}
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M12 8c-1.657 0-3 1.343-3 3h6c0-1.657-1.343-3-3-3zm0 8v-4m0 0H9m3 0h3m5-4h-2a9 9 0 11-18 0H3"/>
     </svg>
-    JINSI YA KULIPIA 
+    LIPIA KIFURUSHI
   </a>
 </nav>
 
@@ -125,8 +125,8 @@ $("#themeToggle").onclick=()=>document.documentElement.classList.toggle("dark");
 
 // HERO SLIDER
 const heroData=[
-  {title:"Football Leagues",img:"https://i.ibb.co/JRJ73x89/1761496625154-NBCPL25-26-Web-Banner-Revised.png"},
-  {title:"Movies Series",img:"https://i.ibb.co/cSt8Pmqf/The-OTTOMAN-Web-f96b6010180f42b5bcbb4dcad6d7ab3b.jpg"},
+  {title:"Ligi Zote Duniani",img:"https://i.ibb.co/JRJ73x89/1761496625154-NBCPL25-26-Web-Banner-Revised.png"},
+  {title:"AFCON Knockout",img:"https://i.ibb.co/5XtxQyFB/file-00000000d92071fd9c01efda3de656e6-1.png"},
   {title:"Tamthilia Zote",img:"https://i.ibb.co/gZDbF047/kombolela-e8e1af8ff2498aff6aeddc99d26f68a9-3.jpg"}
 ];
 let active=0,timer;
@@ -141,7 +141,7 @@ resetHero();
 
 // CHANNELS DATA
 const channelData=[
-  {id:1,name:"Azamsports HD1",logo:"https://i.postimg.cc/hPW2HrTJ/1757742991724-THUMBNAIL-YANGAVSSIMBA-1.png",link:"https://vsd278.okcdn.ru/hls/9403229735575.m3u8/sig/HkR5Nx-kvtc/expires/1763991939025/srcIp/197.186.3.235/urls/45.136.22.66/clientType/0/srcAg/CHROME_ANDROID/mid/10932842536599/9403229735575_high/index.m3u8?p"},
+  {id:1,name:"Azamsports HD1",logo:"https://i.ibb.co/chx2ycmr/channel-6946a2f03e0fa-2.webp",link:"https://vsd278.okcdn.ru/hls/9403229735575.m3u8/sig/HkR5Nx-kvtc/expires/1763991939025/srcIp/197.186.3.235/urls/45.136.22.66/clientType/0/srcAg/CHROME_ANDROID/mid/10932842536599/9403229735575_high/index.m3u8?p"},
   {id:2,name:"Azamsports HD2",logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png",link:"https://example.com/azamsports2.m3u8"},
   {id:3,name:"Azamsports HD3",logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png",link:"https://example.com/azamsports3.m3u8"},
   {id:4,name:"Azamsports HD4",logo:"https://i.ibb.co/3YSFwzVs/1745862410254-Azam-Sports4-HD-poster-Image-1.png",link:"https://example.com/azamsports4.m3u8"},
@@ -219,5 +219,80 @@ $("#submitPass").onclick=()=>{
 $("#closeModal").onclick=()=>$("#passModal").classList.add("hidden");
 $("#homeBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 </script>
+
+
+<!-- ===============================
+     WHATSAPP FLOAT BUTTON – PRO ANIMATED
+     =============================== -->
+<style>
+#waFloat{
+  position: fixed;
+  bottom: 95px; /* haigongani na bottom nav */
+  right: 16px;
+  z-index: 9999;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: transparent;
+  animation: wa-float 3s ease-in-out infinite;
+  transition: transform .25s ease;
+}
+
+/* Picha ya button */
+#waFloat img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow:
+    0 0 0 rgba(37, 211, 102, 0.7);
+  animation: wa-pulse 2s infinite;
+}
+
+/* Hover effect */
+#waFloat:hover{
+  transform: scale(1.15);
+}
+
+/* FLOAT UP & DOWN */
+@keyframes wa-float{
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* PULSE / BONYAA */
+@keyframes wa-pulse{
+  0%{
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70%{
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+  100%{
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* CLICK FEEDBACK */
+#waFloat:active{
+  transform: scale(0.95);
+}
+</style>
+
+<a id="waFloat"
+   href="https://wa.me/255746956012?text=Habari%20nahitaji%20kulipia%20kifurushi"
+   target="_blank"
+   rel="noopener"
+   aria-label="WhatsApp Chat">
+  <img src="https://i.ibb.co/mLkYv9L/1000104402.png" alt="WhatsApp Button">
+</a>
+<!-- ===============================
+     END WHATSAPP BUTTON
+     =============================== -->
+
+
+
+
 </body>
-      </html>
+  </html>
