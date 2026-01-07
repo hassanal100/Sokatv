@@ -141,10 +141,10 @@ resetHero();
 
 // CHANNELS DATA
 const channelData=[
-  {id:1,name:"Azamsports HD1",logo:"https://i.ibb.co/chx2ycmr/channel-6946a2f03e0fa-2.webp",link:"https://web.mpingotv.com/Travis/player.php?id=122&mpdUrl=https%3A%2F%2Fcdnblncr.azamtvltd.co.tz%2Flive%2Feds%2FAzamSport1%2FDASH%2FAzamSport1.mpd%3Fcdntoken%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3Njc3OTY1NTIsInNpcCI6IjMuMTcyLjE1LjExOCJ9.dHnGnTA9oX6IhC2ENBiR-pjaJ5eXgK0bvLJlkY1o31WJb6eAq-n1EIBdA3H8b-UvpD0qqIprKLowjYM7OzJnpA&authXmlToken=eyJraWQiOiI3NzUwOTAiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJjb250ZW50UmlnaHRzIjpbeyJjb250ZW50SWQiOiJDSC0zOTc0YzJjZC05ZWM0LTRkMDMtODJiMS05Yzk5Mzk3M2U0ODciLCJzdGFydCI6IjIwMjUtMDMtMzFUMDA6MDA6MDBaIiwiZW5kIjoiMjAzMC0wMi0xOVQwMDowMDowMFoiLCJ1c2FnZVJ1bGVzUHJvZmlsZUlkIjoiU0QifV0sInRlbmFudElkIjoiQVpZNFNKOUIiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJleHAiOjE3Njc3NjA2NzIsImRldmljZSI6eyJ3YXRlcm1hcmtpbmciOmZhbHNlLCJhY2NvdW50SWQiOiI0MDkxODg2IiwidmlzaWJsZU1hcmsiOnRydWV9fQ.1nOXQB72AZvt7Fs_qun3hDzznF_Kj7wqDzI4z0bd0po"},
-  {id:2,name:"Azamsports HD2",logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png",link:"https://example.com/azamsports2.m3u8"},
-  {id:3,name:"Azamsports HD3",logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png",link:"https://example.com/azamsports3.m3u8"},
-  {id:4,name:"Azamsports HD4",logo:"https://i.ibb.co/3YSFwzVs/1745862410254-Azam-Sports4-HD-poster-Image-1.png",link:"https://example.com/azamsports4.m3u8"},
+  {id:1,name:"Azamsports HD1",logo:"https://i.ibb.co/chx2ycmr/channel-6946a2f03e0fa-2.webp",link:"https://web.mpingotv.com/Travis/"},
+  {id:2,name:"Azamsports HD2",logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png",link:"https://web.mpingotv.com/Travis/"},
+  {id:3,name:"Azamsports HD3",logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png",link:"https://web.mpingotv.com/Travis/"},
+  {id:4,name:"Azamsports HD4",logo:"https://i.ibb.co/3YSFwzVs/1745862410254-Azam-Sports4-HD-poster-Image-1.png",link:"https://web.mpingotv.com/Travis/"},
   {id:5,name:"Azam One",logo:"https://i.ibb.co/Hf0GZpCk/1753287894295-Minesof-Passion.png",link:"https://example.com/azamone.m3u8"},
   {id:6,name:"Azam Two",logo:"https://i.ibb.co/DHxS2Hbk/THUMBNAIL-CRYSTAL-LOGO-97851dbf6555ae1ab8f8be034d1cf43c.png",link:"https://example.com/azamtwo.m3u8"},
   {id:7,name:"Sinemazetu",logo:"https://i.ibb.co/xqttb42S/1754053142170-Sinemazetu-Poster-Image.png",link:"https://example.com/sinemazetu.m3u8"},
@@ -200,7 +200,7 @@ render(channelData);
 
 // PASSWORD SYSTEM
 let selectedChannel=null;
-const correctPassword="SAKAID";
+const correctPassword="SOKATVID";
 grid.addEventListener("click", e=>{
   const btn=e.target.closest("button[data-id]");
   if(!btn) return;
@@ -295,4 +295,4 @@ $("#homeBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 
 
 </body>
-        </html>
+</html>
