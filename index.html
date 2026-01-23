@@ -1,298 +1,363 @@
 <!DOCTYPE html>
-<html lang="sw" class="scroll-smooth">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>Soka TV Max</title>
-<meta name="theme-color" content="#0f1720" />
-<link rel="icon" href="https://img.icons8.com/fluency/48/play-button-circled.png"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        maxbg: "#0f1720",
-        maxcard: "#111827",
-        card2: "#1b2430",
-        accent1: "#ff3657",
-        accent2: "#08e0ff"
-      },
-      boxShadow: {
-        glow: "0 0 25px rgba(8,224,255,.35)"
-      },
-      animation: {
-        shimmer: "shimmer 2s infinite",
-        fade: "fadeIn 0.5s ease-out"
-      },
-      keyframes: {
-        shimmer: { "0%":{backgroundPosition:"-200% 0"}, "100%":{backgroundPosition:"200% 0"} },
-        fade: { "0%":{opacity:0, transform:"translateY(8px)"}, "100%":{opacity:1, transform:"translateY(0)"} }
-      }
-    }
-  }
-}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DStvChapu</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-*{font-family: Inter, system-ui, Segoe UI}
-.hide-scroll::-webkit-scrollbar{display:none}
-.tilt:hover{transform:rotateX(6deg) rotateY(-6deg) scale(1.03)}
-html, body {
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  overscroll-behavior: none;
+:root{
+  --bg:#060b17;
+  --card:#0d162e;
+  --accent:#4da3ff;
+  --soft:#132a55;
 }
-img, video, iframe {max-width: 100%; height: auto;}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,"Segoe UI";
+}
+
+body{
+  background:linear-gradient(180deg,#050912,#060b17);
+  color:#fff;
+  padding-bottom:95px;
+}
+
+/* LINK RESET */
+.card-link{
+  text-decoration:none;
+  color:inherit;
+  display:block;
+}
+
+/* ================= TOP BAR ================= */
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+}
+
+.logo{
+  font-size:18px;
+  font-weight:700;
+  color:#4da3ff;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.top-actions button{
+  background:linear-gradient(135deg,#102a55,#0d1b3d);
+  border:none;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:25px;
+  margin-left:6px;
+  cursor:pointer;
+}
+
+/* ================= SLIDER ================= */
+.slider{
+  margin:10px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  height:190px;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:scale(1.08);
+  transition:.8s;
+}
+
+.slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.dots{
+  position:absolute;
+  bottom:12px;
+  width:100%;
+  text-align:center;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  background:#555;
+  border-radius:50%;
+  display:inline-block;
+  margin:0 4px;
+}
+
+.dot.active{
+  background:#4da3ff;
+  width:22px;
+  border-radius:10px;
+}
+
+/* ================= PRO CARDS ================= */
+.section{
+  padding:12px;
+}
+
+.card{
+  position:relative;
+  background:linear-gradient(145deg,#0f1f44,#0a1228);
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  padding:14px;
+  margin-bottom:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  overflow:hidden;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:scale(1.02);
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top right,rgba(77,163,255,.15),transparent 40%);
+}
+
+.card img{
+  width:90px;
+  height:90px;
+  border-radius:18px;
+  object-fit:cover;
+  flex-shrink:0;
+}
+
+.card-info{
+  margin-left:14px;
+  flex:1;
+}
+
+.card-info h3{
+  font-size:17px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.tags{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.tags span{
+  background:rgba(77,163,255,.15);
+  color:#bcdcff;
+  padding:4px 10px;
+  font-size:11px;
+  border-radius:14px;
+}
+
+.card-action{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+}
+
+.pin{
+  color:#4da3ff;
+  font-size:15px;
+}
+
+.card-action button{
+  background:linear-gradient(135deg,#4da3ff,#1e5bff);
+  border:none;
+  padding:9px 18px;
+  color:#fff;
+  border-radius:22px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* ================= WHATSAPP ================= */
+.whatsapp{
+  position:fixed;
+  bottom:95px;
+  right:18px;
+  width:58px;
+  height:58px;
+  background:linear-gradient(135deg,#25D366,#1ebe5d);
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  text-decoration:none;
+}
+
+/* ================= BOTTOM NAV ================= */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  display:flex;
+  background:linear-gradient(180deg,#0a1330,#080f25);
+}
+
+.nav-item{
+  flex:1;
+  text-align:center;
+  padding:12px 0;
+  font-size:12px;
+  color:#aaa;
+  text-decoration:none;
+}
+
+.nav-item i{
+  display:block;
+  font-size:20px;
+  margin-bottom:4px;
+}
+
+.nav-item.active{
+  color:#4da3ff;
+}
+
+.nav-item.pay{
+  background:linear-gradient(135deg,#4da3ff,#1e5bff);
+  color:#fff;
+  font-weight:600;
+}
 </style>
 </head>
-<body class="bg-maxbg text-white relative pb-24 sm:pb-20">
 
-<!-- HEADER -->
-<header class="sticky top-0 z-50 backdrop-blur bg-maxbg/80 border-b border-white/5 animate-fade">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
-    <span class="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent">Soka TV Max</span>
-    <div class="ml-auto flex items-center gap-2">
-      <button id="themeToggle" class="p-2 rounded-xl hover:bg-white/5 text-lg" title="Theme">🌓</button>
-    </div>
-  </div>
-</header>
+<body>
 
-<!-- HERO SLIDER -->
-<section id="hero" class="relative animate-fade">
-  <div class="max-w-6xl mx-auto px-3 sm:px-6">
-    <div class="relative overflow-hidden rounded-3xl mt-3 sm:mt-5 shadow-glow h-[200px] sm:h-[280px] md:h-[380px]">
-      <div id="heroSlides" class="h-full w-full transition-all duration-700"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-maxbg/80 to-transparent"></div>
-      <div class="absolute bottom-5 left-4 sm:bottom-8 sm:left-6">
-        <h2 id="heroTitle" class="text-2xl sm:text-4xl md:text-5xl font-extrabold drop-shadow leading-tight"></h2>
-        <button id="watchBtn" class="mt-3 px-4 sm:px-6 py-2.5 rounded-xl bg-gradient-to-r from-accent1 to-accent2 font-semibold hover:scale-105 transition text-sm sm:text-base">▶ Tazama</button>
-      </div>
-      <div id="heroDots" class="absolute right-3 bottom-3 sm:right-5 sm:bottom-5 flex gap-2"></div>
-    </div>
-  </div>
-</section>
-
-<!-- CHANNELS -->
-<main class="max-w-6xl mx-auto px-3 sm:px-6 py-8 sm:py-10" id="channels">
-  <h3 class="text-xl sm:text-2xl font-extrabold mb-4">Soka TV Max Channels</h3>
-  <div class="flex flex-col sm:flex-row gap-2 mb-4">
-    <input id="channelSearch" class="flex-1 bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 ring-accent2/50" placeholder="Tafuta Channel..." />
-    <select id="channelSort" class="bg-card2/70 rounded-xl px-3 py-2 text-sm outline-none">
-      <option value="name">A–Z</option>
-      <option value="recent">Newest</option>
-    </select>
-  </div>
-  <div id="channelGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4"></div>
-</main>
-
-<!-- BOTTOM NAV -->
-<nav class="fixed bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 bg-card2/80 backdrop-blur-xl shadow-glow border border-white/10 rounded-2xl flex justify-around items-center w-[95%] sm:w-[90%] max-w-sm py-2 z-50 select-none">
-  <button id="homeBtn" class="flex flex-col items-center text-[11px] sm:text-xs text-gray-300 hover:text-accent2 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M4 10v10h16V10"/>
-    </svg>
-    HOME
-  </button>
-
-  <a href="https://malipochapu.store" target="_blank" rel="noopener noreferrer"
-     class="flex flex-col items-center text-[11px] sm:text-xs text-gray-300 hover:text-accent1 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M12 8c-1.657 0-3 1.343-3 3h6c0-1.657-1.343-3-3-3zm0 8v-4m0 0H9m3 0h3m5-4h-2a9 9 0 11-18 0H3"/>
-    </svg>
-    LIPIA KIFURUSHI
-  </a>
-</nav>
-
-<!-- PASSWORD MODAL -->
-<div id="passModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[999] px-4">
-  <div class="bg-card2 p-5 rounded-xl w-full max-w-xs sm:max-w-sm text-center shadow-glow animate-fade">
-    <h3 class="text-base sm:text-lg font-bold mb-3">Weka Password Kufungua Channel</h3>
-    <input id="passInput" type="password" placeholder="Ingiza Password"
-      class="w-full px-3 py-2 rounded-lg bg-maxcard outline-none text-sm mb-3 text-center" />
-    <p id="passError" class="text-red-500 text-xs mb-2 hidden">Tafadhali Weka Pasword Sahihi! Lipia Kifurushi Kupata Pasword yako.</p>
-    <div class="flex justify-center gap-3 mt-2">
-      <button id="closeModal" class="px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-500 text-xs">Funga</button>
-      <button id="submitPass" class="px-4 py-2 rounded-lg bg-gradient-to-r from-accent1 to-accent2 hover:scale-105 text-xs">Endelea</button>
-    </div>
+<!-- TOP -->
+<div class="top-bar">
+  <div class="logo"><i class="fa-solid fa-signal"></i>Soka TV Max</div>
+  <div class="top-actions">
+    <button><i class="fa-solid fa-rotate"></i> Refresh</button>
+    <button><i class="fa-solid fa-search"></i></button>
   </div>
 </div>
 
+<!-- SLIDER -->
+<div class="slider">
+  <div class="slide active"><img src="https://i.ibb.co/KxmSsdX1/1767038556053-OTTOMAN.png"></div>
+  <div class="slide"><img src="https://i.ibb.co/KjwPjD81/images-89.jpg"></div>
+  <div class="slide"><img src="https://i.ibb.co/B5JGdCcR/article-dstv-tanzania-nfs-25-26-1920x1080.jpg"></div>
+  <div class="slide"><img src="https://i.ibb.co/bgw5NFPz/1766913631065-VIWANJANI.png"></div>
+  <div class="slide"><img src="https://i.ibb.co/3Y1J42Z4/supersport-new-football-season2025-16x9.png"></div>
+  <div class="slide"><img src="https://i.ibb.co/XxPjMtfH/MV5-BYzg5-MTBm-ODEt-MGFh-NC00-Zm-Iw-LTk5-NWQt-Yz-My-ODli-Nj-Ix-Mj-Qx-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg"></div>
+
+  <div class="dots">
+    <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- PRO CARDS -->
+<div class="section">
+
+<a href="https://tazamachannelszote.malipochapu.store/" class="card-link">
+  <div class="card">
+    <img src="https://i.ibb.co/XktS5r0p/1767086246817.jpg">
+    <div class="card-info">
+      <h3>Azam Channels</h3>
+      <div class="tags"><span>#live</span><span>#mechi zote</span><span>#afcon</span></div>
+    </div>
+    <div class="card-action">
+      <i class="fa-solid fa-thumbtack pin"></i>
+      <button>Tazama</button>
+    </div>
+  </div>
+</a>
+
+<a href="https://tazamachannelszote.malipochapu.store/" class="card-link">
+  <div class="card">
+    <img src="https://i.ibb.co/dwCdyCcv/images-19.png">
+    <div class="card-info">
+      <h3>DStv Channels</h3>
+      <div class="tags"><span>#LigiZote</span><span>#TamthiliaZote</span></div>
+    </div>
+    <div class="card-action">
+      <i class="fa-solid fa-thumbtack pin"></i>
+      <button>Tazama</button>
+    </div>
+  </div>
+</a>
+
+<a href="https://tazamachannelszote.malipochapu.store/" class="card-link">
+  <div class="card">
+    <img src="https://i.ibb.co/YxNS0Nn/images-84.jpg">
+    <div class="card-info">
+      <h3>Super Sports</h3>
+      <div class="tags"><span>#MechiZote</span></div>
+    </div>
+    <div class="card-action">
+      <i class="fa-solid fa-thumbtack pin"></i>
+      <button>Tazama</button>
+    </div>
+  </div>
+</a>
+
+</div>
+
+<!-- WHATSAPP -->
+<a
+  class="whatsapp"
+  href="https://wa.me/255798072771?text=Habari%20Nahitaji%20Kulipia%20Kifurushi%20Cha%20Soka%20TvMax"
+  target="_blank"
+>
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="#" class="nav-item active">
+    <i class="fa-solid fa-house"></i>
+    Home
+  </a>
+
+  <!-- PAY NOW BUTTON IMEFANYWA IWE LINK KAMILI -->
+  <a href="https://fanyamalipo.malipochapu.store" class="nav-item pay" target="_blank">
+    <i class="fa-solid fa-credit-card"></i>
+    Pay Now
+  </a>
+</div>
+
 <script>
-const $ = (q, el=document)=> el.querySelector(q);
-$("#themeToggle").onclick=()=>document.documentElement.classList.toggle("dark");
-
-// HERO SLIDER
-const heroData=[
-  {title:"Ligi Zote Duniani",img:"https://i.ibb.co/JRJ73x89/1761496625154-NBCPL25-26-Web-Banner-Revised.png"},
-  {title:"AFCON Knockout",img:"https://i.ibb.co/5XtxQyFB/file-00000000d92071fd9c01efda3de656e6-1.png"},
-  {title:"Tamthilia Zote",img:"https://i.ibb.co/gZDbF047/kombolela-e8e1af8ff2498aff6aeddc99d26f68a9-3.jpg"}
-];
-let active=0,timer;
-function paintHero(){
-  $("#heroSlides").style.background=`url('${heroData[active].img}') center/cover no-repeat`;
-  $("#heroTitle").textContent=heroData[active].title;
-  $("#heroDots").innerHTML=heroData.map((_,i)=>`<span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${i===active?"bg-accent2":"bg-white/40"}"></span>`).join('');
-}
-function nextHero(){active=(active+1)%heroData.length;paintHero();}
-function resetHero(){clearInterval(timer);paintHero();timer=setInterval(nextHero,4000);}
-resetHero();
-
-// CHANNELS DATA
-const channelData=[
-  {id:1,name:"Azamsports HD1",logo:"https://i.ibb.co/2YLwN9nY/1768496435173-LIGIKUUSINGIDABS-Poster-Image.png",link:"https://tazamachannelszote.malipochapu.store/"},
-  {id:2,name:"Azamsports HD2",logo:"https://i.ibb.co/pj47kk4H/1745918430207-Azam-Sports2-HD-poster-Image-1.png",link:"https://tazamachannelszote.malipochapu.store/"},
-  {id:3,name:"Azamsports HD3",logo:"https://i.ibb.co/4RCf9bwY/1755418478226-AS3-HD-SERIEA.png",link:"https://sokatvmax.malipochupu.store.malipochapu.store/"},
-  {id:4,name:"Azamsports HD4",logo:"https://i.ibb.co/3YSFwzVs/1745862410254-Azam-Sports4-HD-poster-Image-1.png",link:"https://sokatvmax.malipochupu.store.malipochapu.store/"},
-  {id:5,name:"Azam One",logo:"https://i.ibb.co/Hf0GZpCk/1753287894295-Minesof-Passion.png",link:"https://sokatvmax.malipochupu.store.malipochapu.store/"},
-  {id:6,name:"Azam Two",logo:"https://i.ibb.co/DHxS2Hbk/THUMBNAIL-CRYSTAL-LOGO-97851dbf6555ae1ab8f8be034d1cf43c.png",link:"https://sokatvmax.malipochupu.store.malipochapu.store/"},
-  {id:7,name:"Sinemazetu",logo:"https://i.ibb.co/xqttb42S/1754053142170-Sinemazetu-Poster-Image.png",link:"https://sokatvmax.malipochupu.store.malipochapu.store/"},
-  {id:8,name:"UTV",logo:"https://i.ibb.co/TBGXS4Yz/1745861815665-UTVHD-poster-Image-1.png",link:"https://example.com/utv.m3u8"},
-  {id:9,name:"WASAFI",logo:"https://i.ibb.co/0yLRfQcy/1745862042988-WASAFITV-poster-Image.png",link:"https://example.com/wasafi.m3u8"},
-  {id:10,name:"CROWN TV",logo:"https://i.ibb.co/zTdWNF8D/1745514813150-Crown-TVPoster-Image.png",link:"https://example.com/crowntv.m3u8"},
-  {id:11,name:"Cheka Plus",logo:"https://i.ibb.co/ksB2rHLp/1746270439707-Cheka-Plus-TV-poster-Image.png",link:"https://example.com/chekaplus.m3u8"},
-  {id:12,name:"Zamaradi TV",logo:"https://i.ibb.co/wZhqnNZy/1752573163243-Zamaradi-poster-Imagecopy.png",link:"https://example.com/zamaradi.m3u8"},
-  {id:13,name:"Base",logo:"https://i.ibb.co/SDvp89PC/1746293544419-MTVBase-poster-Image.png",link:"https://example.com/base.m3u8"},
-  {id:14,name:"KIX",logo:"https://i.ibb.co/Q7cR0DMN/1745861711450-KIXMovies-poster-Image.png",link:"https://example.com/kix.m3u8"},
-  {id:15,name:"ZBC",logo:"https://i.ibb.co/gFgqbXpJ/1752573203869-ZBC-poster-Imagecopy3.png",link:"https://example.com/zbc.m3u8"},
-  {id:16,name:"Arise & Shine",logo:"https://i.ibb.co/2f0WTDB/1754312188774-Ariseand-Shine-poster-Imagecopy2.png",link:"https://example.com/ariseandshine.m3u8"},
-  {id:17,name:"Hope TV",logo:"https://i.ibb.co/Jw7JJyjK/1754294061223-Hope-Channel.png",link:"https://example.com/hopetv.m3u8"},
-  {id:18,name:"TV Imani",logo:"https://i.ibb.co/N2XtTbnT/1754311969660-Tv-Imaan-poster-Image.png",link:"https://example.com/tvimani.m3u8"},
-  {id:19,name:"Bukedde 1",logo:"https://i.ibb.co/v6fZG4JN/1752572068822-Bukedde1-poster-Image-1.png",link:"https://example.com/bukedde1.m3u8"},
-  {id:20,name:"Bukedde 2",logo:"https://i.ibb.co/3PzrqZ1/1752572104107-Bukedde2-poster-Image-1.png",link:"https://example.com/bukedde2.m3u8"},
-  {id:21,name:"TBC",logo:"https://i.ibb.co/gLckv6xh/20250817-154738.png",link:"https://example.com/tbc.m3u8"},
-  {id:22,name:"ITV",logo:"https://i.ibb.co/RkwnP0v4/20250817-155306.jpg",link:"https://example.com/itv.m3u8"},
-  {id:23,name:"EATV",logo:"https://i.ibb.co/JjkGDHYz/20250817-160105.jpg",link:"https://example.com/eatv.m3u8"},
-  {id:24,name:"Safari Channel",logo:"https://i.ibb.co/zWRPrYM1/image-search-1749678167328.png",link:"https://example.com/safari.m3u8"},
-  {id:25,name:"Super Sports 1",logo:"https://i.ibb.co/m4Y3dZP/20250108-061205.png",link:"https://example.com/supersports1.m3u8"},
-  {id:26,name:"Super Sports 2",logo:"https://i.ibb.co/6n9mFDw/20250108-060659.png",link:"https://example.com/supersports2.m3u8"},
-  {id:27,name:"Super Sports 3",logo:"https://i.ibb.co/5KSzzvd/20250108-060716.png",link:"https://example.com/supersports3.m3u8"},
-  {id:28,name:"Super Sports 4",logo:"https://i.ibb.co/JjxY6qM/20250108-060734.png",link:"https://example.com/supersports4.m3u8"},
-  {id:29,name:"Maisha MAGIC",logo:"https://i.ibb.co/n8jvgk5L/image-search-1748592235295.png",link:"https://example.com/vacation.m3u8"},
-  {id:30,name:"LALIGA",logo:"https://i.ibb.co/m4Y3dZP/20250108-061205.png",link:"https://example.com/kombolela.m3u8"},
-  {id:31,name:"UEFA",logo:"https://i.postimg.cc/2j9gxSRq/ezgif-3e450caa3efd2f.gif",link:"https://example.com/tufani.m3u8"}
-].map((ch,i)=>({...ch,addedAt:Date.now()-i*3600_000}));
-
-const grid=$("#channelGrid"),search=$("#channelSearch"),sort=$("#channelSort");
-function card(ch){
-  return `<button data-id="${ch.id}" class="tilt group bg-card2 rounded-2xl shadow hover:shadow-glow transition overflow-hidden">
-    <div class="aspect-[3/4] w-full rounded-xl overflow-hidden relative">
-      <img src="${ch.logo}" alt="${ch.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-    </div>
-    <div class="mt-1 sm:mt-2 flex items-center justify-between px-2 pb-2">
-      <span class="font-semibold text-[13px] sm:text-sm truncate">${ch.name}</span>
-      <span class="text-[10px] sm:text-[11px] px-2 py-1 rounded-lg bg-accent2/20">LIVE</span>
-    </div>
-  </button>`;
-}
-function render(list){grid.innerHTML=list.map(card).join('');}
-function applyFilters(){
-  const q=search.value.toLowerCase();
-  let list=channelData.filter(c=>c.name.toLowerCase().includes(q));
-  if(sort.value==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
-  else list.sort((a,b)=>b.addedAt-a.addedAt);
-  render(list);
-}
-search.oninput=applyFilters; sort.onchange=applyFilters;
-render(channelData);
-
-// PASSWORD SYSTEM
-let selectedChannel=null;
-const correctPassword="NGOTAID";
-grid.addEventListener("click", e=>{
-  const btn=e.target.closest("button[data-id]");
-  if(!btn) return;
-  selectedChannel=channelData.find(c=>c.id==btn.dataset.id);
-  $("#passModal").classList.remove("hidden");
-  $("#passInput").value="";
-  $("#passError").classList.add("hidden");
-});
-$("#submitPass").onclick=()=>{
-  const entered=$("#passInput").value.trim();
-  if(entered===correctPassword){
-    $("#passModal").classList.add("hidden");
-    window.open(selectedChannel.link,"_blank");
-  } else $("#passError").classList.remove("hidden");
-};
-$("#closeModal").onclick=()=>$("#passModal").classList.add("hidden");
-$("#homeBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+let slides=document.querySelectorAll('.slide');
+let dots=document.querySelectorAll('.dot');
+let i=0;
+setInterval(()=>{
+  slides[i].classList.remove('active');
+  dots[i].classList.remove('active');
+  i=(i+1)%slides.length;
+  slides[i].classList.add('active');
+  dots[i].classList.add('active');
+},4500);
 </script>
 
-
-<!-- ===============================
-     WHATSAPP FLOAT BUTTON – PRO ANIMATED
-     =============================== -->
-<style>
-#waFloat{
-  position: fixed;
-  bottom: 95px; /* haigongani na bottom nav */
-  right: 16px;
-  z-index: 9999;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  background: transparent;
-  animation: wa-float 3s ease-in-out infinite;
-  transition: transform .25s ease;
-}
-
-/* Picha ya button */
-#waFloat img{
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow:
-    0 0 0 rgba(37, 211, 102, 0.7);
-  animation: wa-pulse 2s infinite;
-}
-
-/* Hover effect */
-#waFloat:hover{
-  transform: scale(1.15);
-}
-
-/* FLOAT UP & DOWN */
-@keyframes wa-float{
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-12px); }
-  100% { transform: translateY(0); }
-}
-
-/* PULSE / BONYAA */
-@keyframes wa-pulse{
-  0%{
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-  }
-  70%{
-    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
-  }
-  100%{
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
-
-/* CLICK FEEDBACK */
-#waFloat:active{
-  transform: scale(0.95);
-}
-</style>
-
-<a id="waFloat"
-   href="https://wa.me/255798072771?text=Habari%20nahitaji%20kulipia%20kifurushi"
-   target="_blank"
-   rel="noopener"
-   aria-label="WhatsApp Chat">
-  <img src="https://i.ibb.co/mLkYv9L/1000104402.png" alt="WhatsApp Button">
-</a>
-<!-- ===============================
-     END WHATSAPP BUTTON
-     =============================== -->
-
-
-
-
 </body>
-  </html>
+</html>
